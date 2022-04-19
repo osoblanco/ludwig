@@ -4,7 +4,7 @@ import pytest
 
 from ludwig.automl.base_config import infer_type, should_exclude
 from ludwig.automl.utils import FieldInfo
-from ludwig.constants import BINARY, CATEGORY, IMAGE, NUMBER, TEXT, DATE
+from ludwig.constants import BINARY, CATEGORY, DATE, IMAGE, NUMBER, TEXT
 from ludwig.data.dataset_synthesizer import generate_string
 
 ROW_COUNT = 100
@@ -89,6 +89,7 @@ def test_infer_type_explicit_date(num_distinct_values, distinct_values, img_valu
         image_values=img_values,
     )
     assert infer_type(field, missing_vals, ROW_COUNT) == DATE
+
 
 @pytest.mark.parametrize(
     "idx,num_distinct_values,dtype,name,expected",
